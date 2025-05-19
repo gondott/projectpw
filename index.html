@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechnoVision - Technology Solutions</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #1abc9c;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .navbar {
+            background-color: rgba(44, 62, 80, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: white;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
+
+        #hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)), url('/api/placeholder/1920/1080') center/cover no-repeat;
+            color: white;
+            padding-top: 140px;
+            padding-bottom: 100px;
+        }
+        
+        .section-padding {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-weight: 700;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .about-img {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card {
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .team-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .team-img {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-social {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(52, 152, 219, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .team-img:hover .team-social {
+            opacity: 1;
+        }
+        
+        .team-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 5px;
+            color: var(--primary-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .team-social a:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .contact-info {
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: 100%;
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .contact-form {
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-form .form-control {
+            background-color: #f8f9fa;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-color);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 30px 0;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+        
+        .social-links li {
+            margin-right: 15px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+        }
+        
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 999;
+        }
+        
+        #back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .section-padding {
+                padding: 70px 0;
+            }
+            
+            #hero {
+                padding-top: 100px;
+                padding-bottom: 70px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 50px 0;
+            }
+            
+            #hero {
+                padding-top: 80px;
+                padding-bottom: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Techno<span style="color: var(--accent-color)">Vision</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#hero">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#team">Our Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">Innovating Technology For Tomorrow's World</h1>
+                    <p class="lead mb-4">TechnoVision delivers cutting-edge technology solutions designed to transform your business and meet the challenges of the digital era.</p>
+                    <a href="#contact" class="btn btn-lg btn-primary me-3">Get in Touch</a>
+                    <a href="#services" class="btn btn-lg btn-outline-light">Our Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title text-center">
+                        <h2>About Us</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="/api/placeholder/600/400" alt="About TechnoVision" class="img-fluid about-img">
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="mb-4">Our Story</h3>
+                    <p>Founded in 2015, TechnoVision began as a small team of passionate tech enthusiasts with a vision to make technology accessible and powerful for businesses of all sizes. Today, we've grown into a leading technology solutions provider with a team of over 50 experts and a portfolio of successful projects spanning multiple industries.</p>
+                    
+                    <div class="mt-5">
+                        <h3 class="mb-4">Our Vision</h3>
+                        <p>To be the catalyst for digital transformation, empowering businesses with innovative technology solutions that drive growth and sustainability in the digital economy.</p>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <h3 class="mb-4">Our Mission</h3>
+                        <p>To deliver cutting-edge technology solutions that solve complex business challenges, enhance operational efficiency, and create competitive advantages for our clients through innovation, expertise, and commitment to excellence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-padding bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title text-center">
+                        <h2>Our Services</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card service-card h-100">
+                        <div class="card-body text-center p-5">
+                            <div class="service-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h4 class="card-title mb-3">Custom Software Development</h4>
+                            <p class="card-text">We design and develop custom software solutions tailored to your specific business needs, from enterprise applications to mobile apps.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card service-card h-100">
+                        <div class="card-body text-center p-5">
+                            <div class="service-icon">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                            <h4 class="card-title mb-3">Cloud Solutions</h4>
+                            <p class="card-text">Transform your business with our comprehensive cloud migration, management, and optimization services for enhanced scalability and security.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card service-card h-100">
+                        <div class="card-body text-center p-5">
+                            <div class="service-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4 class="card-title mb-3">Cybersecurity</h4>
+                            <p class="card-text">Protect your business with our robust cybersecurity solutions including threat detection, prevention, and comprehensive security management.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card service-card h-100">
+                        <div class="card-body text-center p-5">
+                            <div class="service-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h4 class="card-title mb-3">Data Analytics</h4>
+                            <p class="card-text">Harness the power of your data with our advanced analytics solutions, turning raw data into actionable business intelligence.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card service-card h-100">
+                        <div class="card-body text-center p-5">
+                            <div class="service-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h4 class="card-title mb-3">Mobile App Development</h4>
+                            <p class="card-text">Create stunning, high-performance mobile applications for iOS and Android platforms that engage your customers and streamline operations.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card service-card h-100">
+                        <div class="card-body text-center p-5">
+                            <div class="service-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h4 class="card-title mb-3">IT Consulting</h4>
+                            <p class="card-text">Get expert guidance on technology strategy, digital transformation, and IT infrastructure optimization to achieve your business objectives.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title text-center">
+                        <h2>Our Team</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="team-img">
+                            <img src="/api/placeholder/400/400" alt="Team Member" class="img-fluid">
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title mb-0">Alex Johnson</h5>
+                            <p class="text-muted">CEO & Founder</p>
+                            <p class="card-text">With over 15 years of experience in technology leadership, Alex drives our company vision and strategy.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="team-img">
+                            <img src="/api/placeholder/400/400" alt="Team Member" class="img-fluid">
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title mb-0">Sarah Martinez</h5>
+                            <p class="text-muted">CTO</p>
+                            <p class="card-text">Sarah oversees our technical direction and innovations, bringing deep expertise in cloud architecture and AI.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="team-img">
+                            <img src="/api/placeholder/400/400" alt="Team Member" class="img-fluid">
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title mb-0">Michael Chen</h5>
+                            <p class="text-muted">Head of Development</p>
+                            <p class="card-text">Michael leads our development team, ensuring the highest quality standards in all our software solutions.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="team-img">
+                            <img src="/api/placeholder/400/400" alt="Team Member" class="img-fluid">
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title mb-0">Emily Wilson</h5>
+                            <p class="text-muted">UX/UI Design Lead</p>
+                            <p class="card-text">Emily crafts intuitive and beautiful user experiences that make our products stand out in the market.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="team-img">
+                            <img src="/api/placeholder/400/400" alt="Team Member" class="img-fluid">
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title mb-0">David Rodriguez</h5>
+                            <p class="text-muted">Cybersecurity Director</p>
+                            <p class="card-text">David ensures our solutions and client data remain protected with cutting-edge security measures.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-card">
+                        <div class="team-img">
+                            <img src="/api/placeholder/400/400" alt="Team Member" class="img-fluid">
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title mb-0">Anna Kim</h5>
+                            <p class="text-muted">Client Success Manager</p>
+                            <p class="card-text">Anna works closely with our clients to ensure their projects deliver maximum business value.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title text-center">
+                        <h2>Contact Us</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <div class="contact-info">
+                        <h3 class="mb-4">Get in Touch</h3>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h5>Location</h5>
+                                <p>123 Tech Park, Silicon Valley, CA 94000, USA</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h5>Phone</h5>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h5>Email</h5>
+                                <p>info@technovision.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h5>Working Hours</h5>
+                                <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-7">
+                    <div class="contact-form">
+                        <h3 class="mb-4">Send us a Message</h3>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" placeholder="Subject" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-primary submit-btn">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h4 class="mb-4">TechnoVision</h4>
+                    <p>Transforming businesses through innovative technology solutions. We help organizations navigate the digital landscape and achieve growth in the ever-evolving tech world.</p>
+                    <ul class="social-links mt-4">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-4 col-lg-2 mb-4 mb-md-0">
+                    <h5 class="mb-4">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-4 col-lg-2 mb-4 mb-md-0">
+                    <h5 class="mb-4">Services</h5>
+                    <ul class="footer-links">
+                        <li><a href="#services">Software Development</a></li>
+                        <li><a href="#services">Cloud Solutions</a></li>
+                        <li><a href="#services">Cybersecurity</a></li>
+                        <li><a href="#services">Data Analytics</a></li>
+                        <li><a href="#services">IT Consulting</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-4 col-lg-4">
+                    <h5 class="mb-4">Newsletter</h5>
+                    <p>Subscribe to our newsletter for the latest updates and insights.</p>
+                    <form class="mt-4">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Enter your email" required>
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <div class="copyright text-center">
+                        <p>© 2025 TechnoVision. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Back to top button functionality
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu after clicking a link
+                    const navbarToggler = document.querySelector('.navbar-toggler');
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse.classList.contains('show')) {
+                        navbarToggler.click();
+                    }
+                }
+            });
+        });
+        
+        // Form validation
+        const contactForm = document.querySelector('#contact form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Basic validation
+                let valid = true;
+                const inputs = this.querySelectorAll('input, textarea');
+                
+                inputs.forEach(input => {
+                    if (input.hasAttribute('required') && !input.value.trim()) {
+                        valid = false;
+                        input.classList.add('is-invalid');
+                    } else {
+                        input.classList.remove('is-invalid');
+                    }
+                    
+                    // Email validation
+                    if (input.type === 'email' && input.value.trim()) {
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailRegex.test(input.value.trim())) {
+                            valid = false;
+                            input.classList.add('is-invalid');
+                        }
+                    }
+                });
+                
+                if (valid) {
+                    // Here you would normally send the form data to a server
+                    // For demo purposes, we'll just show a success message
+                    const formControls = this.querySelectorAll('.form-control');
+                    formControls.forEach(control => {
+                        control.value = '';
+                    });
+                    
+                    // Create and show success alert
+                    const successAlert = document.createElement('div');
+                    successAlert.className = 'alert alert-success mt-3';
+                    successAlert.innerHTML = 'Thank you! Your message has been sent successfully.';
+                    
+                    // Insert alert after form
+                    this.appendChild(successAlert);
+                    
+                    // Remove alert after 5 seconds
+                    setTimeout(() => {
+                        successAlert.remove();
+                    }, 5000);
+                }
+            });
+            
+            // Remove validation styling when input changes
+            contactForm.querySelectorAll('.form-control').forEach(input => {
+                input.addEventListener('input', function() {
+                    this.classList.remove('is-invalid');
+                });
+            });
+        }
+        
+        // Navbar color change on scroll
+        const navbar = document.querySelector('.navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(44, 62, 80, 0.95)';
+            } else {
+                navbar.style.backgroundColor = 'rgba(44, 62, 80, 0.95)';
+            }
+        });
+        
+        // Initialize service cards animation on scroll
+        const serviceCards = document.querySelectorAll('.service-card');
+        
+        function checkServiceCards() {
+            const triggerBottom = window.innerHeight * 0.8;
+            
+            serviceCards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                
+                if (cardTop < triggerBottom) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Initial check and event listener
+        serviceCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+        
+        window.addEventListener('scroll', checkServiceCards);
+        checkServiceCards(); // Initial check
+    </script>
