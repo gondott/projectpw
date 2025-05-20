@@ -1,0 +1,1904 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechnoVision - Platform EduTech Terdepan</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <!-- Swiper for carousels -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css">
+    <style>
+        /* Custom styles */
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #06b6d4;
+            --dark-color: #0f172a;
+            --light-gray: #f8fafc;
+            --text-color: #334155;
+            --light-color: #f1f5f9;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+        }
+        
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--light-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        .preloader.fade {
+            opacity: 0;
+        }
+        
+        .preloader .spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(0, 0, 0, 0.1);
+            border-left-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--light-gray);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        /* Navbar */
+        .navbar {
+            padding: 15px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.8rem;
+            letter-spacing: -0.5px;
+        }
+        
+        .navbar-brand span.logo-dot {
+            color: var(--accent-color);
+            font-size: 2.5rem;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 10px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover:before, .nav-link.active:before {
+            width: 100%;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+        
+        .login-btn {
+            font-weight: 600;
+            padding: 8px 25px;
+            border-radius: 30px;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(37, 99, 235, 0.3);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 150px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .btn-hero {
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-hero:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-outline-hero {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .btn-outline-hero:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+        
+        .hero-image {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-image img {
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s ease;
+        }
+        
+        .hero-image:hover img {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.3);
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background: var(--accent-color);
+            bottom: -10px;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            font-size: 1.1rem;
+            color: #64748b;
+        }
+        
+        /* Features */
+        .feature-card {
+            border: none;
+            border-radius: 15px;
+            padding: 40px 30px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s ease;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(6, 182, 212, 0.1));
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transition: all 0.5s ease;
+        }
+        
+        .feature-card:hover::before {
+            height: 100%;
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            transition: all 0.5s ease;
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+        
+        .feature-icon i {
+            font-size: 35px;
+            color: white;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .feature-title:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+            bottom: 0;
+            left: 0;
+            transition: all 0.5s ease;
+        }
+        
+        .feature-card:hover .feature-title:after {
+            width: 80px;
+        }
+        
+        /* About Section */
+        .about-section {
+            background-color: var(--light-gray);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-image {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .about-image img {
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 20px;
+            left: 20px;
+            border: 5px solid var(--accent-color);
+            border-radius: 20px;
+            z-index: -1;
+        }
+        
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .about-content h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            bottom: 0;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        .about-content p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .about-box {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .about-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .about-box h5 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .about-box h5:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        /* Services Section */
+        .service-card {
+            padding: 40px 30px;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 0%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transition: all 0.5s ease;
+        }
+        
+        .service-card:hover::before {
+            height: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            transition: all 0.5s ease;
+        }
+        
+        .service-card:hover i,
+        .service-card:hover h4,
+        .service-card:hover p {
+            color: white;
+        }
+        
+        .service-card:hover .btn-service {
+            background: white;
+            color: var(--primary-color);
+        }
+        
+        .service-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            transition: all 0.5s ease;
+        }
+        
+        .service-card p {
+            margin-bottom: 25px;
+            transition: all 0.5s ease;
+        }
+        
+        .btn-service {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 8px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.5s ease;
+        }
+        
+        .btn-service:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* Team Section */
+        .team-section {
+            background-color: var(--light-gray);
+            position: relative;
+        }
+        
+        .team-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s ease;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .team-image {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: auto;
+            transition: all 0.5s ease;
+        }
+        
+        .team-card:hover .team-image img {
+            transform: scale(1.1);
+        }
+        
+        .team-social {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(37, 99, 235, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+        
+        .team-card:hover .team-social {
+            opacity: 1;
+        }
+        
+        .team-social a {
+            width: 40px;
+            height: 40px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: var(--primary-color);
+            font-size: 18px;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .team-social a:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+        
+        .team-card:hover .team-social a {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .team-card:hover .team-social a:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+        
+        .team-card:hover .team-social a:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+        
+        .team-card:hover .team-social a:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+        
+        .team-content {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .team-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+        
+        .team-content p.position {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        /* Testimonials */
+        .testimonial-section {
+            padding: 100px 0;
+        }
+        
+        .testimonial-swiper {
+            padding: 30px 10px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: all 0.5s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-content {
+            padding: 30px;
+            position: relative;
+        }
+        
+        .testimonial-content:before {
+            content: '\f10d';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 10px;
+            left: 30px;
+            font-size: 2rem;
+            color: rgba(37, 99, 235, 0.1);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
+            border: 3px solid var(--primary-color);
+        }
+        
+        .testimonial-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-author-info h5 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .testimonial-author-info p {
+            color: var(--accent-color);
+            font-weight: 500;
+            margin: 0;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-rating {
+            color: #ffc107;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M0 38.59l2.83-2.83 1.41 1.41L1.41 40H0v-1.41zM0 20.83l2.83-2.83 1.41 1.41L1.41 22H0v-1.17zM0 3.07l2.83-2.83 1.41 1.41L1.41 4.24H0V3.07zm. . . etc'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .cta-content {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .btn-cta {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            background: white;
+            color: var(--primary-color);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Contact Section */
+        .contact-info-box {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
+        }
+        
+        .contact-icon i {
+            font-size: 24px;
+            color: white;
+        }
+        
+        .contact-info {
+            flex-grow: 1;
+        }
+        
+        .contact-info h5 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .contact-info p {
+            margin: 0;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-form h4 {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .contact-form h4:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .form-control {
+            height: 55px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            padding: 0 20px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.25);
+        }
+        
+        textarea.form-control {
+            height: 150px;
+            padding: 15px 20px;
+        }
+        
+        .btn-contact {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-contact:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            background-color: var(--light-gray);
+        }
+        
+        .accordion-item {
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .accordion-button {
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 20px;
+            background-color: white;
+            box-shadow: none !important;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            color: var(--primary-color);
+            background-color: rgba(37, 99, 235, 0.05);
+        }
+        
+        .accordion-button:focus {
+            border-color: transparent;
+            box-shadow: none;
+        }
+        
+        .accordion-button::after {
+            background-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-body {
+            padding: 20px;
+            background-color: white;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--dark-color);
+            padding: 80px 0 0;
+            color: #cbd5e1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo span {
+            color: var(--accent-color);
+        }
+        
+        .footer-about p {
+            margin-bottom: 25px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .footer-title {
+            font-size: 1.3rem;
+            color: white;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-title:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links li a {
+            color: #cbd5e1;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links li a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+        
+        .footer-links li a i {
+            margin-right: 10px;
+            font-size: 12px;
+        }
+        
+        .footer-contact-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .footer-contact-icon {
+            color: var(--accent-color);
+            margin-right: 15px;
+            font-size: 18px;
+        }
+        
+        .footer-newsletter p {
+            margin-bottom: 20px;
+        }
+        
+        .footer-subscribe {
+            display: flex;
+        }
+        
+        .footer-subscribe input {
+            flex-grow: 1;
+            height: 50px;
+            border-radius: 5px 0 0 5px;
+            border: none;
+            padding: 0 20px;
+            font-size: 0.9rem;
+        }
+        
+        .footer-subscribe button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 5px 5px 0;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-subscribe button:hover {
+            background: var(--accent-color);
+        }
+        
+        .footer-bottom {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px 0;
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .footer-bottom p {
+            margin: 0;
+        }
+        
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--accent-color);
+            transform: translateY(-5px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 991px) {
+            .navbar-toggler {
+                border: none;
+                padding: 0;
+            }
+            
+            .navbar-toggler:focus {
+                box-shadow: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-image {
+                margin-top: 50px;
+            }
+            
+            section {
+                padding: 80px 0;
+            }
+            
+            .about-image {
+                margin-bottom: 50px;
+            }
+            
+            .about-image:before {
+                width: 90%;
+                height: 90%;
+            }
+            
+            .feature-card, .service-card {
+                margin-bottom: 30px;
+            }
+            
+            .team-card {
+                margin-bottom: 30px;
+            }
+            
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+            
+            .contact-form {
+                margin-top: 50px;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+            
+            .hero-section {
+                padding: 120px 0 80px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .about-content h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-content p {
+                font-size: 1rem;
+            }
+            
+            .btn-cta {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+            
+            .footer {
+                padding: 60px 0 0;
+            }
+            
+            .footer-widget {
+                margin-bottom: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Techno<span class="text-primary">Vision</span><span class="logo-dot">.</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Fitur</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Tentang Kami</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#courses">Kursus</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimoni</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Kontak</a>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-primary login-btn" href="#">Masuk</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-white" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+                        <h1>Transformasi Pendidikan Digital Indonesia</h1>
+                        <p>Platform pembelajaran inovatif yang menggabungkan teknologi canggih untuk pengalaman belajar yang menyenangkan dan efektif bagi semua kalangan.</p>
+                        <div class="d-flex gap-3">
+                            <a href="#" class="btn btn-light btn-hero">Mulai Sekarang</a>
+                            <a href="#" class="btn btn-outline-hero">Pelajari Lebih Lanjut</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image floating" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                        <img src="https://via.placeholder.com/600x400" alt="TechnoVision Hero" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-title text-center" data-aos="fade-up">
+                <h2>Fitur Unggulan</h2>
+                <p>Nikmati berbagai keunggulan platform kami yang dirancang untuk memaksimalkan pengalaman belajar Anda</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h4 class="feature-title">Pembelajaran Interaktif</h4>
+                        <p>Konten pembelajaran interaktif dengan berbagai media yang menarik untuk mempermudah pemahaman materi.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4 class="feature-title">Analisis Kemajuan</h4>
+                        <p>Pantau perkembangan belajar dengan analisis data yang komprehensif dan laporan kemajuan berkala.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4 class="feature-title">Komunitas Belajar</h4>
+                        <p>Bergabung dengan komunitas pembelajar untuk diskusi, berbagi pengalaman dan kolaborasi.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <h4 class="feature-title">Sertifikasi Digital</h4>
+                        <p>Dapatkan sertifikat digital yang diakui industri sebagai bukti keahlian yang Anda miliki.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h4 class="feature-title">Mobile Learning</h4>
+                        <p>Akses materi pembelajaran kapan saja dan di mana saja melalui aplikasi mobile yang responsif.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4 class="feature-title">Dukungan 24/7</h4>
+                        <p>Tim dukungan kami siap membantu Anda dengan pertanyaan teknis atau pembelajaran 24 jam sehari.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="about-image">
+                        <img src="https://via.placeholder.com/600x500" alt="About TechnoVision" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+                    <div class="about-content">
+                        <h2>Tentang TechnoVision</h2>
+                        <p>TechnoVision adalah platform pendidikan digital terdepan di Indonesia yang didedikasikan untuk memberikan akses pendidikan berkualitas bagi semua. Kami menggabungkan teknologi terkini dengan metode pembelajaran yang efektif untuk menciptakan pengalaman belajar yang menyenangkan dan bermakna.</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="about-box">
+                                    <h5>Visi Kami</h5>
+                                    <p>Menjadi platform pendidikan digital terkemuka yang mengubah cara Indonesia belajar dan berkembang.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="about-box">
+                                    <h5>Misi Kami</h5>
+                                    <p>Menyediakan pendidikan berkualitas tinggi yang dapat diakses oleh semua lapisan masyarakat.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary mt-4">Pelajari Lebih Lanjut</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="services-section" id="courses">
+        <div class="container">
+            <div class="section-title text-center" data-aos="fade-up">
+                <h2>Kursus Unggulan</h2>
+                <p>Pilih dari berbagai kursus berkualitas tinggi yang dirancang untuk memenuhi kebutuhan belajar Anda</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <i class="fas fa-code"></i>
+                        <h4>Web Development</h4>
+                        <p>Pelajari cara membuat website profesional dengan HTML, CSS, JavaScript dan teknologi web terbaru.</p>
+                        <a href="#" class="btn btn-service">Lihat Kursus</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <i class="fas fa-robot"></i>
+                        <h4>Artificial Intelligence</h4>
+                        <p>Kuasai teknologi AI dan machine learning untuk membangun solusi pintar dan otomatis.</p>
+                        <a href="#" class="btn btn-service">Lihat Kursus</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h4>Mobile App Development</h4>
+                        <p>Kembangkan aplikasi mobile yang menarik dan fungsional untuk Android dan iOS.</p>
+                        <a href="#" class="btn btn-service">Lihat Kursus</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card">
+                        <i class="fas fa-database"></i>
+                        <h4>Data Science</h4>
+                        <p>Analisa dan visualisasikan data besar untuk menghasilkan wawasan berharga bagi bisnis.</p>
+                        <a href="#" class="btn btn-service">Lihat Kursus</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-card">
+                        <i class="fas fa-palette"></i>
+                        <h4>UI/UX Design</h4>
+                        <p>Desain antarmuka pengguna yang menarik dan pengalaman pengguna yang luar biasa.</p>
+                        <a href="#" class="btn btn-service">Lihat Kursus</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Cyber Security</h4>
+                        <p>Lindungi sistem dan data dari ancaman siber dengan teknik keamanan terbaru.</p>
+                        <a href="#" class="btn btn-service">Lihat Kursus</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="700">
+                <a href="#" class="btn btn-outline-primary">Lihat Semua Kursus</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section" id="team">
+        <div class="container">
+            <div class="section-title text-center" data-aos="fade-up">
+                <h2>Tim Pengajar</h2>
+                <p>Dapatkan bimbingan dari para ahli dan profesional terbaik di bidangnya</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Team Member">
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <div class="team-content">
+                            <h4>Budi Santoso</h4>
+                            <p class="position">Web Developer</p>
+                            <p>Pengalaman 10+ tahun di Web Development dan arsitektur sistem.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Team Member">
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <div class="team-content">
+                            <h4>Siti Rahayu</h4>
+                            <p class="position">Data Scientist</p>
+                            <p>Spesialis data dengan background riset di machine learning.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Team Member">
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <div class="team-content">
+                            <h4>Dian Pratama</h4>
+                            <p class="position">Mobile Developer</p>
+                            <p>Pengembang aplikasi mobile profesional untuk Android dan iOS.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Team Member">
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <div class="team-content">
+                            <h4>Maya Wijaya</h4>
+                            <p class="position">UI/UX Designer</p>
+                            <p>Desainer antarmuka pengguna dengan fokus pada pengalaman yang intuitif.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonial-section" id="testimonials">
+        <div class="container">
+            <div class="section-title text-center" data-aos="fade-up">
+                <h2>Testimonial Pelajar</h2>
+                <p>Lihat apa yang dikatakan para pelajar tentang pengalaman belajar mereka bersama TechnoVision</p>
+            </div>
+            <div class="swiper testimonial-swiper" data-aos="fade-up" data-aos-delay="200">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <div class="testimonial-author">
+                                    <div class="testimonial-img">
+                                        <img src="https://via.placeholder.com/100x100" alt="Testimonial">
+                                    </div>
+                                    <div class="testimonial-author-info">
+                                        <h5>Rina Fitriani</h5>
+                                        <p>Mahasiswa</p>
+                                    </div>
+                                </div>
+                                <p class="testimonial-text">TechnoVision benar-benar mengubah cara saya belajar pemrograman. Metode pengajaran yang interaktif dan dukungan komunitas membuat proses belajar menjadi jauh lebih menyenangkan dan efektif.</p>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <div class="testimonial-author">
+                                    <div class="testimonial-img">
+                                        <img src="https://via.placeholder.com/100x100" alt="Testimonial">
+                                    </div>
+                                    <div class="testimonial-author-info">
+                                        <h5>Arief Wibowo</h5>
+                                        <p>Professional</p>
+                                    </div>
+                                </div>
+                                <p class="testimonial-text">Sebagai profesional yang bekerja, fleksibilitas belajar di TechnoVision sangat membantu saya meningkatkan keterampilan sambil tetap menjalani pekerjaan. Kursus AI mereka sangat komprehensif.</p>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <div class="testimonial-author">
+                                    <div class="testimonial-img">
+                                        <img src="https://via.placeholder.com/100x100" alt="Testimonial">
+                                    </div>
+                                    <div class="testimonial-author-info">
+                                        <h5>Dewi Kusuma</h5>
+                                        <p>Guru</p>
+                                    </div>
+                                </div>
+                                <p class="testimonial-text">Saya menggunakan TechnoVision untuk membantu mengajar siswa saya. Platform ini memiliki materi yang sangat relevan dengan kurikulum dan memudahkan siswa untuk belajar dengan cara yang lebih menarik.</p>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8" data-aos="fade-right">
+                    <div class="cta-content">
+                        <h2>Siap Untuk Memulai Perjalanan Belajar Digital Anda?</h2>
+                        <p>Bergabunglah dengan ribuan pelajar yang telah sukses meningkatkan keterampilan dan karir mereka melalui platform TechnoVision.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-lg-end" data-aos="fade-left" data-aos-delay="200">
+                    <a href="#" class="btn btn-light btn-cta">Daftar Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-title text-center" data-aos="fade-up">
+                <h2>Hubungi Kami</h2>
+                <p>Ada pertanyaan atau masukan? Jangan ragu untuk menghubungi tim kami</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Lokasi</h4>
+                                <p>Jl. Teknologi No. 123, Jakarta Selatan, Indonesia</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Telepon</h4>
+                                <p>(021) 12345678</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>info@technovision.id</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Jam Operasional</h4>
+                                <p>Senin - Jumat: 09:00 - 17:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+                    <div class="contact-form">
+                        <h4>Kirim Pesan</h4>
+                        <form action="#" method="post">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Nama Lengkap" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" placeholder="Email" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" placeholder="Subjek" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <textarea class="form-control" placeholder="Pesan" required></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-contact">Kirim Pesan</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-title text-center" data-aos="fade-up">
+                <h2>Pertanyaan Umum</h2>
+                <p>Jawaban untuk pertanyaan yang sering ditanyakan tentang platform kami</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10" data-aos="fade-up" data-aos-delay="200">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Bagaimana cara mendaftar di TechnoVision?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Untuk mendaftar di TechnoVision, klik tombol "Daftar Sekarang" di halaman utama kami. Isi formulir pendaftaran dengan informasi yang diminta dan verifikasi akun Anda melalui email. Setelah itu, Anda dapat memilih paket berlangganan yang sesuai dan mulai belajar.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Apakah saya bisa mengakses kursus dari perangkat mobile?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Ya, TechnoVision dirancang dengan responsif untuk semua perangkat. Anda dapat mengakses semua kursus dan fitur melalui browser web pada smartphone atau tablet Anda. Selain itu, kami juga memiliki aplikasi mobile yang tersedia untuk Android dan iOS yang dapat diunduh dari Google Play Store atau App Store.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Apakah sertifikat yang diberikan diakui oleh industri?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Ya, sertifikat TechnoVision diakui oleh berbagai perusahaan dan organisasi di industri teknologi. Kami bekerja sama dengan perusahaan terkemuka untuk memastikan kurikulum kami sesuai dengan kebutuhan industri saat ini. Sertifikat kami mencakup teknologi terbaru dan standar industri yang diakui.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Berapa lama waktu yang dibutuhkan untuk menyelesaikan kursus?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Durasi kursus bervariasi tergantung pada topik dan tingkat kesulitan. Kursus dasar biasanya dapat diselesaikan dalam 4-6 minggu, sementara kursus lanjutan dapat memakan waktu 8-12 minggu. Namun, karena platform kami bersifat self-paced, Anda dapat belajar sesuai dengan kecepatan dan jadwal Anda sendiri.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    Apakah ada diskon untuk pelajar dan mahasiswa?
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Ya, kami menyediakan diskon khusus untuk pelajar dan mahasiswa. Cukup verifikasi status pendidikan Anda melalui email lembaga pendidikan yang terdaftar untuk mendapatkan diskon hingga 50% untuk semua kursus dan paket berlangganan kami.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-widget footer-about">
+                        <div class="footer-logo">
+                            Techno<span>Vision</span><span class="logo-dot">.</span>
+                        </div>
+                        <p>TechnoVision adalah platform pendidikan digital terdepan yang dirancang untuk membantu setiap orang mengembangkan keterampilan teknologi dengan cara yang menyenangkan dan efektif.</p>
+                        <div class="footer-social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-widget footer-links">
+                        <div class="footer-title">
+                            Halaman
+                        </div>
+                        <ul class="footer-links">
+                            <li><a href="#home"><i class="fas fa-chevron-right"></i> Beranda</a></li>
+                            <li><a href="#features"><i class="fas fa-chevron-right"></i> Fitur</a></li>
+                            <li><a href="#about"><i class="fas fa-chevron-right"></i> Tentang Kami</a></li>
+                            <li><a href="#courses"><i class="fas fa-chevron-right"></i> Kursus</a></li>
+                            <li><a href="#testimonials"><i class="fas fa-chevron-right"></i> Testimoni</a></li>
+                            <li><a href="#contact"><i class="fas fa-chevron-right"></i> Kontak</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget footer-links">
+                        <div class="footer-title">
+                            Kursus Populer
+                        </div>
+                        <ul class="footer-links">
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Web Development</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Mobile App Development</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Data Science</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> UI/UX Design</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Artificial Intelligence</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Cyber Security</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget footer-newsletter">
+                        <div class="footer-title">
+                            Newsletter
+                        </div>
+                        <p>Berlangganan newsletter kami untuk mendapatkan informasi terbaru tentang kursus dan promo special.</p>
+                        <div class="footer-subscribe">
+                            <input type="email" placeholder="Email Anda">
+                            <button><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                        <div class="mt-4">
+                            <div class="footer-contact-item">
+                                <div class="footer-contact-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>(021) 12345678</div>
+                            </div>
+                            <div class="footer-contact-item">
+                                <div class="footer-contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>info@technovision.id</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2025 TechnoVision. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            document.querySelector('.preloader').style.display = 'none';
+        });
+        
+        // AOS Init
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+        
+        // Swiper Testimonials
+        var swiperTestimonials = new Swiper(".testimonial-swiper", {
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 30,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                992: {
+                    slidesPerView: 3,
+                },
+            },
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+        });
+        
+        // Active link switching
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+        
+        window.addEventListener('scroll', function() {
+            const scrollY = window.pageYOffset;
+            
+            sections.forEach(section => {
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop - 100;
+                const sectionId = section.getAttribute('id');
+                
+                if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if(link.getAttribute('href') === '#' + sectionId) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+            
+            // Back to top button
+            const backToTop = document.querySelector('.back-to-top');
+            if(scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+        
+        // Navbar scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if(window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close navbar collapse on mobile
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if(navbarCollapse.classList.contains('show')) {
+                        navbarCollapse.classList.remove('show');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
